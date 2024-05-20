@@ -6,7 +6,7 @@
             <img class="header__menu-icon" src="assets/icon/menu-x.svg" alt="">
         </div>
         <div id="nav" class="header__logo">
-            <a class="header__link" href="index.php">
+            <a class="header__link" href="index">
                 <span class="header__logo-img">
                     <img src="assets/img/logo-H.svg" alt="logo con la letra H">
                 </span>
@@ -18,10 +18,10 @@
         </div>
         <nav class="header__nav" hidden>
             <ul>
-                <li><a href="about.php">About Us</a></li>
-                <li><a href="rooms.php">Rooms</a></li>
-                <li><a href="offers.php">Offers</a></li>
-                <li><a href="contact.php">Contact</a></li>
+                <li><a href="about">About Us</a></li>
+                <li><a href="rooms">Rooms</a></li>
+                <li><a href="offers">Offers</a></li>
+                <li><a href="contact">Contact</a></li>
             </ul>
         </nav>
         <div class="header__icons">
