@@ -84,11 +84,11 @@
             </div>
         </form>
     </section>
-    @if ($formContact !== null)
+    {{-- @if ($formContact !== null)
         @if(!$operationSuccessful)
             @component('swal', ['title' => 'Your data has some errors', 'text' => 'Incorrect data', 'icon' => 'error'])
             @endcomponent
             {{ header( 'Refresh: 1') }}
         @endif
-    @endif
+    @endif --}}
 @endsection

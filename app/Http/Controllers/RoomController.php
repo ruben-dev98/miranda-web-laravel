@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Amenity;
-use App\Models\Photo;
 use App\Models\Room;
-use Illuminate\Http\Request;
+require_once __DIR__ . '/../../../helpers/format.php';
 
 class RoomController extends Controller
 {
@@ -15,7 +13,8 @@ class RoomController extends Controller
     public function index()
     {
         $rooms = Room::with(['photos', 'amenities'])->get();
-        return view('rooms', ['rooms' => $rooms]);
+        $formatRooms = formatListRooms($rooms);
+        return view('rooms', ['rooms' => $formatRooms]);
     }
 
     /**

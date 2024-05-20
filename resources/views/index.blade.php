@@ -71,7 +71,7 @@
                     <div class="rooms__swiper-slide swiper-slide">
                         @component('amenitiesMenu', ['room' => $room, 'title' => true])
                         @endcomponent
-                        <div class="rooms__image" style='background-image: url({{ $room['photo'] }});'>
+                        <div class="rooms__image" style="background-image: url('{{ $room['photo'] }}');">
                         </div>
                         <div class="rooms__details">
                             <div class="rooms__details-info">
@@ -329,7 +329,7 @@
             </article>
         </div>
     </section>
-    @if ($success === '1')
+    {{--@if ($success === '1')
         @if ($redirection === '1')
             @component('swal', [
                 'title' => '¡Thank you for your request!',
@@ -345,5 +345,5 @@
             ])
             @endcomponent
         @endif
-    @endif
+    @endif--}}
 @endsection

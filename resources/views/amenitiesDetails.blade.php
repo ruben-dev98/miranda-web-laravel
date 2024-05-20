@@ -7,7 +7,7 @@
         @if ($amenity !== null)
             <li class="room-details__amenities-list-item">
                 <img class="room-details__amenities-list-item-img" src="{{ getAmenityIcon($amenity) }}" alt="">
-                <span class="room-details__amenities-list-item-text">{{ $amenity }}</span>
+                <span class="room-details__amenities-list-item-text">{{ $amenity['name'] }}</span>
             </li>
         @endif
     @endforeach
