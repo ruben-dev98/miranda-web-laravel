@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Facades\DB;
 
 class Room extends Model
 {
@@ -34,10 +35,10 @@ class Room extends Model
     }
 
     public static function offers() {
-        return self::with(['photos', 'amenities'])->where('offer', 'true')->get();
+        return self::with(['photos', 'amenities'])->where('offer', 'true')->orderBy('discount', 'desc')->get();
     }
 
     public static function swiper() {
-        return self::with(['photos', 'amenities'])->get();
+        return self::with(['photos', 'amenities'])->orderBy('price', 'desc')->take(3)->get();
     }
 }

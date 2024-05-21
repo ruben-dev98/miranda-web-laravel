@@ -62,7 +62,7 @@
     </section>
     <section class="room-details__amenities --max-width">
         <p class="room-details__amenities-title">Amenities</p>
-        @component('amenitiesDetails')
+        @component('amenitiesDetails', ['room' => $room, 'title' => true])
         @endcomponent
     </section>
     <section class="room-details__founder --max-width">
@@ -105,10 +105,10 @@
                                 <span>${{ $room['price'] }}/Night</span>
                                 <span>
                                     @if ($check_in === null)
-                                        <a href="room-details.php?id={{ $room['id'] }}"></a>
+                                        <a href="room-details/{{ $room['id'] }}"></a>
                                     @else
                                         <a
-                                            href="room-details.php?id={{ $room['id'] }}&check_in={{ $check_in }}&check_out={{ $check_out }}"></a>
+                                            href="room-details/{{ $room['id'] }}?check_in={{ $check_in }}&check_out={{ $check_out }}"></a>
                                     @endif
                                 </span>
                             </p>
@@ -120,7 +120,7 @@
             <div class="offers__swiper-button-next swiper-button-next"></div>
         </div>
     </section>
-    @if ($formBooking !== null)
+    {{-- @if ($formBooking !== null)
         @if (!$operationSuccessful)
             @component('swal', [
                 'title' => '¡We are sorry!',
@@ -131,5 +131,5 @@
             @endcomponent
             {{ header( 'Refresh: 1') }}
         @endif
-    @endif
+    @endif --}}
 @endsection

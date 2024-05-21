@@ -22,6 +22,11 @@ class RoomController extends Controller
      */
     public function show(Room $room)
     {
-        return view('room-details', ['room' => $room]);
+        $formatRoom = formatRoom($room);
+        $check_in = isset($_GET['check_in']) ? $_GET['check_in'] : null;
+        $check_out = isset($_GET['check_out']) ? $_GET['check_out'] : null;
+        $rooms = Room::swiper();
+        $formatRooms = formatListRooms($rooms);
+        return view('roomDetails', ['room' => $formatRoom, 'check_in' => $check_in, 'check_out' => $check_out, 'rooms' => $formatRooms]);
     }
 }

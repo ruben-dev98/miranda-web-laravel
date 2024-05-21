@@ -30,7 +30,7 @@
                                 </div>
                                 <p class="rooms__list-item-details-price">
                                     <span>${{ $room['price'] }}/Night</span><span><a
-                                            href="room-details.php?id={{ $room['id'] }}&check_in={{ $check_in }}&check_out={{ $check_out }}"></a></span>
+                                            href="room-details/{{ $room['id'] }}?check_in={{ $check_in }}&check_out={{ $check_out }}"></a></span>
                                 </p>
                             </div>
                         </div>

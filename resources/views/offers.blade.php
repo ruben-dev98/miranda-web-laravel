@@ -13,13 +13,13 @@
     <section class="offers offers__cards --max-width">
         @foreach ($rooms as $room)
             <div class="offers__card">
-                <a href="room-details.php?id={{ $room['id'] }}"><img class="offers__img"
+                <a href="room-details/{{ $room['id'] }}"><img class="offers__img"
                         src="{{ $room['photo'] }}" alt=""></a>
                 <div class="offers__inner">
                     <header class="offers__card-header">
                         <div>
                             <p class="offers__informative-text upper__case">{{ $room['type'] }}</p>
-                            <p class="offers__title"><a href="room-details.php?id={{ $room['id'] }}">{{ $room['name'] }}</a></p>
+                            <p class="offers__title"><a href="room-details/{{ $room['id'] }}">{{ $room['name'] }}</a></p>
                         </div>
                         <div class="offers__prices">
                             <p class="offers__price offers__price--crossed">
@@ -40,7 +40,7 @@
                             @component('amenitiesDetails', ['room' => $room, 'title' => true])
                             @endcomponent
                         </section>
-                        <button class="offers__button upper__case"><a href="room-details.php?id={{ $room['id'] }}">Book
+                        <button class="offers__button upper__case"><a href="room-details/{{ $room['id'] }}">Book
                                 Now</a></button>
                     </div>
                 </div>
@@ -64,7 +64,7 @@
                             </p>
                             <p class="rooms__grid-item-details-price">
                                 <span>${{ $room['price'] }}/Night</span><span><a
-                                        href="room-details.php?id={{ $room['id'] }}"></a></span>
+                                        href="room-details/{{ $room['id'] }}"></a></span>
                             </p>
                         </div>
                     </div>
