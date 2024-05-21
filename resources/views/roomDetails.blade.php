@@ -105,10 +105,9 @@
                                 <span>${{ $room['price'] }}/Night</span>
                                 <span>
                                     @if ($check_in === null)
-                                        <a href="room-details/{{ $room['id'] }}"></a>
+                                        <a href="{{ route('roomDetails', ['room' => $room['id']]) }}"></a>
                                     @else
-                                        <a
-                                            href="room-details/{{ $room['id'] }}?check_in={{ $check_in }}&check_out={{ $check_out }}"></a>
+                                        <a href="{{ route('roomDetails', ['room' => $room['id'], 'check_in' => $check_in, 'check_out' => $check_out]) }}"></a>
                                     @endif
                                 </span>
                             </p>

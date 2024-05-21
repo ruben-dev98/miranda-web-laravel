@@ -6,7 +6,7 @@
             <img class="header__menu-icon" src="{{ asset('./assets/icon/menu-x.svg') }}" alt="">
         </div>
         <div id="nav" class="header__logo">
-            <a class="header__link" href="index">
+            <a class="header__link" href="{{ route('home') }}">
                 <span class="header__logo-img">
                     <img src="{{ asset('assets/img/logo-H.svg') }}" alt="logo con la letra H">
                 </span>
@@ -18,10 +18,10 @@
         </div>
         <nav class="header__nav" hidden>
             <ul>
-                <li><a href="about">About Us</a></li>
-                <li><a href="rooms">Rooms</a></li>
-                <li><a href="offers">Offers</a></li>
-                <li><a href="contact">Contact</a></li>
+                <li><a href="{{ route('about') }}">About Us</a></li>
+                <li><a href="{{ route('rooms') }}">Rooms</a></li>
+                <li><a href="{{ route('offers') }}">Offers</a></li>
+                <li><a href="{{ route('contact') }}">Contact</a></li>
             </ul>
         </nav>
         <div class="header__icons">

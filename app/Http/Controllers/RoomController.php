@@ -12,7 +12,14 @@ class RoomController extends Controller
      */
     public function index()
     {
-        $rooms = Room::with(['photos', 'amenities'])->get();
+        $check_in = isset($_GET['check_in']) ? $_GET['check_in'] : null;
+        $check_out = isset($_GET['check_out']) ? $_GET['check_out'] : null;
+        if($check_in !== null) {
+            $rooms = Room::with(['photos', 'amenities']);
+        } else {
+            $rooms = Room::with(['photos', 'amenities'])->get();
+        }
+        
         $formatRooms = formatListRooms($rooms);
         return view('rooms', ['rooms' => $formatRooms]);
     }

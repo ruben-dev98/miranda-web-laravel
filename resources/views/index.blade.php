@@ -10,7 +10,7 @@
         </div>
     </header>
     <section class="checking">
-        <form class="checking__inner form --max-width" action="rooms-list.php">
+        <form class="checking__inner form --max-width" action="rooms-list">
             <div class="form__control">
                 <div class="form__control-input">
                     <label class="checking__label" for="check_in">Arrival Date</label>

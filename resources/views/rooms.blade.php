@@ -28,7 +28,7 @@
                                 </p>
                                 <p class="rooms__grid-item-details-price">
                                     <span>${{ $room['price'] }}/Night</span><span><a
-                                            href="room-details/{{ $room['id'] }}"></a></span>
+                                            href="{{ route('roomDetails', ['room' => $room['id']]) }}"></a></span>
                                 </p>
                             </div>
                         </div>

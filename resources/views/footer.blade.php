@@ -1,9 +1,9 @@
-<footer class="footer" style="background-image: url(./assets/img/bg-footer.png);">
+<footer class="footer" style="background-image: url({{ asset('./assets/img/bg-footer.png') }}));">
     <div class="footer__background">
         <div class="footer__inner --max-width">
             <header class="footer__header">
                 <span class="footer__header-logo">
-                    <img src="assets/img/logo-H.svg" alt="logo con la letra H">
+                    <img src="{{ asset('assets/img/logo-H.svg') }}" alt="logo con la letra H">
                 </span>
                 <h2 class="footer__header-title upper__case">
                     <span>Hotel</span>
@@ -119,7 +119,7 @@
                 <h2 class="footer__contact-title">Contact Us.</h2>
                 <div class="footer__contact-info">
                     <section>
-                        <img class="footer__contact-info-icon" src="assets/img/call.svg"
+                        <img class="footer__contact-info-icon" src="{{ asset('assets/img/call.svg') }}"
                             alt="icono de un telefono recibinedo una llamada">
                         <div class="footer__contact-info-text">
                             <p>Phone Number</p>
@@ -127,7 +127,7 @@
                         </div>
                     </section>
                     <section>
-                        <img class="footer__contact-info-icon" src="assets/img/email.svg"
+                        <img class="footer__contact-info-icon" src="{{ asset('assets/img/email.svg') }}"
                             alt="icono de un sobre con un numero 1 en un bocadillo indicando que se tiene un mensaje sin leer">
                         <div class="footer__contact-info-text">
                             <p>Email</p>
@@ -135,7 +135,7 @@
                         </div>
                     </section>
                     <section>
-                        <img class="footer__contact-info-icon" src="assets/img/ubi.svg"
+                        <img class="footer__contact-info-icon" src="{{ asset('assets/img/ubi.svg') }}"
                             alt="icono para representar una ubicación en un mapa">
                         <div class="footer__contact-info-text footer__contact-info-text--location">
                             <p>Location</p>
