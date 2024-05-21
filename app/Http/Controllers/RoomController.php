@@ -15,7 +15,8 @@ class RoomController extends Controller
         $check_in = isset($_GET['check_in']) ? $_GET['check_in'] : null;
         $check_out = isset($_GET['check_out']) ? $_GET['check_out'] : null;
         if($check_in !== null) {
-            $rooms = Room::with(['photos', 'amenities']);
+            $rooms = Room::with(['photos', 'amenities'])->doesntHave('bookings')->orWhereDoesntHave('bookings', function($query) {
+            })->get();
         } else {
             $rooms = Room::with(['photos', 'amenities'])->get();
         }

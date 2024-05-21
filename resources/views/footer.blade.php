@@ -1,4 +1,4 @@
-<footer class="footer" style="background-image: url({{ asset('./assets/img/bg-footer.png') }}));">
+<footer class="footer" style="background-image: url({{ asset('assets/img/bg-footer.png') }});">
     <div class="footer__background">
         <div class="footer__inner --max-width">
             <header class="footer__header">
