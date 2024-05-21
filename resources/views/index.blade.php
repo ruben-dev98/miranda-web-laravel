@@ -17,7 +17,7 @@
                     <input required class="checking__input" type="date" name="check_in" id="check_in">
                 </div>
                 <div class="form__control-input">
-                    <label class="checking__label" for="check_out">LeDeparture Date</label>
+                    <label class="checking__label" for="check_out">Departure Date</label>
                     <input required class="checking__input" type="date" name="check_out" id="check_out">
                 </div>
             </div>
