@@ -14,15 +14,14 @@ class RoomController extends Controller
     {
         $check_in = isset($_GET['check_in']) ? $_GET['check_in'] : null;
         $check_out = isset($_GET['check_out']) ? $_GET['check_out'] : null;
-        if($check_in !== null) {
-            $rooms = Room::with(['photos', 'amenities'])->doesntHave('bookings')->orWhereDoesntHave('bookings', function($query) {
-            })->get();
+        if($check_in !== null && $check_out !== null) {
+            $rooms = Room::with(['photos', 'amenities'])->doesntHave('bookings')->get();
         } else {
             $rooms = Room::with(['photos', 'amenities'])->get();
         }
         
         $formatRooms = formatListRooms($rooms);
-        return view('rooms', ['rooms' => $formatRooms]);
+        return $check_in !== null ? view('roomsList', ['rooms' => $formatRooms, 'check_in' => $check_in, 'check_out' => $check_out]) : view('rooms', ['rooms' => $formatRooms]);
     }
 
     /**
