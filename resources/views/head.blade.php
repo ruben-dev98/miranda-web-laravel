@@ -15,10 +15,10 @@
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.8/dist/sweetalert2.min.css">
     <!-- Fonts -->
-    <link rel="stylesheet" href="/assets/css/styles.css">
-    <script src="/assets/js/swiper.js" defer></script>
-    <script src="/assets/js/header.js" defer></script>
-    <script src="/assets/js/menu.js" defer></script>
+    <link rel="stylesheet" href="{{ asset('./assets/css/styles.css') }}">
+    <script src="{{ asset('./assets/js/swiper.js') }}" defer></script>
+    <script src="{{ asset('/assets/js/header.js') }}" defer></script>
+    <script src="{{ asset('./assets/js/menu.js') }}" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.8/dist/sweetalert2.all.min.js"></script>
     <title>@yield('title')</title>
 </head>
