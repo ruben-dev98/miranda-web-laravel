@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Message;
+use Exception;
 use Illuminate\Http\Request;
 
 class MessageController extends Controller
@@ -28,7 +29,21 @@ class MessageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'full_name' => 'required',
+            'phone' => 'required',
+            'email' => 'required',
+            'subject' => 'required',
+            'messages' => 'required'
+        ]);
+        try {
+            $message = Message::create($request->all());
+            $message->save();
+            
+            return redirect()->route('home')->with('success', 1)->with('message', 1);
+        } catch(Exception $e) {
+            return redirect()->route('contact')->with('error', 1);
+        }
     }
 
     /**

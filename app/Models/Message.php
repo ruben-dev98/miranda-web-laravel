@@ -22,4 +22,6 @@ class Message extends Model
         'photo',
         'time_passed'
     ];
+
+    public $timestamps = false;
 }

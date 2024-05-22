@@ -52,6 +52,7 @@
     </section>
     <section class="contact__form --max-width">
         <form method="POST">
+            @csrf
             <div class="contact__form-control">
                 <img class="contact__form-control-img contact__form-control-img--full-name"
                     src="assets/icon/contact-full-name.svg" alt="">
@@ -77,18 +78,15 @@
                 <img class="contact__form-control-img contact__form-control-img--area" src="assets/icon/contact-message.svg"
                     alt="">
                 <textarea class="contact__area" placeholder="Enter message" cols="30" rows="10"
-                    name="message" id="message" required></textarea>
+                    name="messages" id="messages" required></textarea>
             </div>
             <div class="contact__form-button">
                 <button class="button contact__button upper__case" type="submit">Send</button>
             </div>
         </form>
     </section>
-    {{-- @if ($formContact !== null)
-        @if(!$operationSuccessful)
-            @component('swal', ['title' => 'Your data has some errors', 'text' => 'Incorrect data', 'icon' => 'error'])
-            @endcomponent
-            {{ header( 'Refresh: 1') }}
-        @endif
-    @endif --}}
+    @if (session('error'))
+        @component('swal', ['title' => 'Your data has some errors', 'text' => 'Incorrect data', 'icon' => 'error'])
+        @endcomponent
+    @endif
 @endsection

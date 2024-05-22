@@ -13,6 +13,7 @@ Route::get('/rooms', [RoomController::class, 'index'])->name('rooms');
 Route::get('/rooms-list', [RoomController::class, 'roomsList'])->name('roomList');
 
 Route::get('/contact', [MessageController::class, 'create'])->name('contact');
+Route::post('/contact', [MessageController::class, 'store'])->name('store-contact');
 
 Route::get('/offers', [RoomController::class, 'offers'])->name('offers');
 
