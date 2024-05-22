@@ -6,7 +6,7 @@
 @foreach ($room['amenities'] as $amenity)
     @if ($amenity !== null)
         <span class="rooms__menu-item">
-            <img src="{{ getAmenityIcon($amenity) }}" alt="">
+            <img src="{{ $amenity->getAmenityIcon() }}" alt="">
         </span>
     @endif
 @endforeach
