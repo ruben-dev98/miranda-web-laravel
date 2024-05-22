@@ -10,7 +10,7 @@ Route::view('/about', 'about')->name('about');
 
 Route::get('/rooms', [RoomController::class, 'index'])->name('rooms');
 
-Route::get('/rooms-list', [RoomController::class, 'index'])->name('roomList');
+Route::get('/rooms-list', [RoomController::class, 'roomsList'])->name('roomList');
 
 Route::get('/contact', [MessageController::class, 'create'])->name('contact');
 

@@ -50,8 +50,17 @@ class Room extends Model
         return self::formatRooms($rooms);
     }
 
-    public static function rooms() {
+    public static function rooms()
+    {
         $rooms = self::with(['photos', 'amenities'])->get();
+        return self::formatRooms($rooms);
+    }
+
+    public static function checkAvailability($check_in, $check_out)
+    {
+        $rooms = self::with(['photos', 'amenities'])->whereHas('bookings', function($query) use($check_in, $check_out) {
+            $query->where('check_in', '>=', $check_in)->orWhere('check_out', '<=', $check_out);
+        })->get();
         return self::formatRooms($rooms);
     }
 

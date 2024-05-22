@@ -5,8 +5,8 @@
         <div class="banner__inner --max-width">
             <p class="font__title font__title--dark  upper__case">The Ultimate Luxury Experience</p>
             <h2 class="font__subtitle font__subtitle--dark font__subtitle--banner-home">The Perfect<br />Base For You</h2>
-            <button class="button button__banner upper__case"><a href="/about.php">Take a Tour</a></button>
-            <button class="button button__banner button--transparent upper__case"><a href="/contact.php">Learn More</a></button>
+            <button class="button button__banner upper__case"><a href="{{ route('about') }}">Take a Tour</a></button>
+            <button class="button button__banner button--transparent upper__case"><a href="{{ route('contact') }}">Learn More</a></button>
         </div>
     </header>
     <section class="checking">
@@ -37,7 +37,7 @@
                     ex ea commodo consequat.
                 </p>
                 <button class="button upper__case">
-                    <a href="/rooms.php">Book Now</a>
+                    <a href="{{ route('rooms') }}">Book Now</a>
                 </button>
             </section>
             <section class="about-us__features">
@@ -107,7 +107,7 @@
             <iframe id="player" class="intro-video__video" src="https://www.youtube.com/embed/Bu3Doe45lcU"
                 title="Hotel Miranda in Bayahibe Dom. Rep. 4K" frameborder="0"
                 allow="accelerometer; autoplay; encrypted-media; picture-in-picture;" allowfullscreen></iframe>
-            <button class="intro-video__button button upper__case"><a href="/offers.php">Book Now</a></button>
+            <button class="intro-video__button button upper__case"><a href="{{ route('offers') }}">Book Now</a></button>
         </div>
     </section>
     <section class="facilities --max-width">

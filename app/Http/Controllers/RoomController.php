@@ -27,22 +27,24 @@ class RoomController extends Controller
         return view('roomDetails', ['room' => $formatRoom, 'check_in' => $check_in, 'check_out' => $check_out, 'rooms' => $formatRooms]);
     }
 
-    public function roomsList() {
+    public function roomsList()
+    {
         $check_in = isset($_GET['check_in']) ? $_GET['check_in'] : null;
         $check_out = isset($_GET['check_out']) ? $_GET['check_out'] : null;
-        $formatRooms = Room::rooms();
+        $formatRooms = Room::checkAvailability($check_in, $check_out);
         return view('roomsList', ['rooms' => $formatRooms, 'check_in' => $check_in, 'check_out' => $check_out]);
     }
 
-    public function home() {
+    public function home()
+    {
         $formatRooms = Room::swiper();
         return view('index', ['rooms' => $formatRooms]);
     }
 
-    public function offers() {
+    public function offers()
+    {
         $formatRoomsSwiper = Room::swiper();
         $formatRooms = Room::offers();
         return view('offers', ['rooms' => $formatRooms, 'popularRooms' => $formatRoomsSwiper]);
     }
-    
 }
