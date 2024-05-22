@@ -86,7 +86,7 @@ class Room extends Model
     {
         $formatRooms = [];
         foreach ($rawRooms as $roomToFormat) {
-            $formatRooms[] = formatRoom($roomToFormat);
+            $formatRooms[] = self::formatRoom($roomToFormat);
         }
         return $formatRooms;
     }
