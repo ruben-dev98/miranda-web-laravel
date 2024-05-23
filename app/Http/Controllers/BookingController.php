@@ -3,63 +3,38 @@
 namespace App\Http\Controllers;
 
 use App\Models\Booking;
+use App\Models\Room;
+use Error;
+use Exception;
 use Illuminate\Http\Request;
 
 class BookingController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        //
-    }
+        try {
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Booking $booking)
-    {
-        //
-    }
+            $request->validate([
+                'check_in' => 'required',
+                'check_out' => 'required',
+                'full_name' => 'required',
+                'email' => 'required',
+                'phone' => 'required',
+                'special_request',
+                'room_id' => 'required'
+            ]);
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Booking $booking)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Booking $booking)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Booking $booking)
-    {
-        //
+            if(Room::isAvailable($request->room_id, $request->check_in, $request->check_out) !== null) {
+                return back()->with('error', 1);
+            }
+            $booking = Booking::create($request->all());
+            $booking->save();
+            return redirect()->route('home')->with('success', 1)->with('booking', 1);
+        } catch(Exception $e) {
+            return back()->with('error', 1);
+        }
     }
 }

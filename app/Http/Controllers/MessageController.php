@@ -29,20 +29,21 @@ class MessageController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'full_name' => 'required',
-            'phone' => 'required',
-            'email' => 'required',
-            'subject' => 'required',
-            'messages' => 'required'
-        ]);
         try {
+            $request->validate([
+                'full_name' => 'required',
+                'phone' => 'required',
+                'email' => 'required',
+                'subject' => 'required',
+                'messages' => 'required'
+            ]);
+            
             $message = Message::create($request->all());
             $message->save();
             
             return redirect()->route('home')->with('success', 1)->with('message', 1);
         } catch(Exception $e) {
-            return redirect()->route('contact')->with('error', 1);
+            return back()->with('error', 1);
         }
     }
 

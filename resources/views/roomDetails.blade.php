@@ -25,7 +25,8 @@
             </div>
             <img class="room-details__details-img" src="{{ $room['photo'] }}" alt="">
         </div>
-        <form class="room-details__form" method="POST">
+        <form class="room-details__form" method="POST" action="{{ route('createBooking') }}">
+            @csrf
             <div class="room-details__form-title">
                 <span>Check Availability</span>
             </div>
@@ -107,7 +108,8 @@
                                     @if ($check_in === null)
                                         <a href="{{ route('roomDetails', ['room' => $room['id']]) }}"></a>
                                     @else
-                                        <a href="{{ route('roomDetails', ['room' => $room['id'], 'check_in' => $check_in, 'check_out' => $check_out]) }}"></a>
+                                        <a
+                                            href="{{ route('roomDetails', ['room' => $room['id'], 'check_in' => $check_in, 'check_out' => $check_out]) }}"></a>
                                     @endif
                                 </span>
                             </p>
@@ -119,16 +121,13 @@
             <div class="offers__swiper-button-next swiper-button-next"></div>
         </div>
     </section>
-    {{-- @if ($formBooking !== null)
-        @if (!$operationSuccessful)
-            @component('swal', [
-                'title' => '¡We are sorry!',
-                'text' => 'This room is not available for the dates you need. Please try different dates or try a different room.
-                    The Miranda Hotel',
-                'icon' => 'error'
-            ])
-            @endcomponent
-            {{ header( 'Refresh: 1') }}
-        @endif
-    @endif --}}
+    @if (session('error'))
+        @component('swal', [
+            'title' => '¡We are sorry!',
+            'text' => 'This room is not available for the dates you need. Please try different dates or try a different room.
+            The Miranda Hotel',
+            'icon' => 'error',
+        ])
+        @endcomponent
+    @endif
 @endsection

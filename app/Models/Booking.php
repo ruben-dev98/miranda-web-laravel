@@ -11,18 +11,16 @@ class Booking extends Model
     use HasFactory;
     protected $table = 'booking';
     protected $fillable = [
-        'id',
         'full_name',
-        'order_date',
         'check_in',
         'check_out',
         'special_request',
-        'status',
-        'discount',
         'phone',
         'email',
         'room_id'
     ];
+
+    public $timestamps = false;
 
 
     public function room(): BelongsTo
