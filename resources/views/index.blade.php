@@ -71,18 +71,18 @@
                     <div class="rooms__swiper-slide swiper-slide">
                         @component('amenitiesMenu', ['room' => $room, 'title' => true])
                         @endcomponent
-                        <div class="rooms__image" style="background-image: url('{{ $room['photo'] }}');">
+                        <div class="rooms__image" style="background-image: url('{{ $room->firstPhoto() }}');">
                         </div>
                         <div class="rooms__details">
                             <div class="rooms__details-info">
-                                <p class="rooms__details-title">{{ $room['type_name'] }}</p>
+                                <p class="rooms__details-title">{{ $room->typeName() }}</p>
                                 <p class="rooms__details-text">
-                                    {{ $room['description'] }}
+                                    {{ $room->description }}
                                 </p>
                             </div>
                             <p class="rooms__details-price">
                                 <span>$</span>
-                                <span>{{ $room['price'] }}</span>
+                                <span>{{ $room->calculateDiscount() }}</span>
                                 <span>/Night</span>
                             </p>
                         </div>
@@ -329,21 +329,4 @@
             </article>
         </div>
     </section>
-    @if (session('success'))
-        @if (session('booking'))
-            @component('swal', [
-                'title' => '¡Thank you for your request!',
-                'text' => 'We have received it correctly. Someone from our Team will get back to you very soon. The Miranda Hotel',
-                'icon' => 'success',
-            ])
-            @endcomponent
-        @else
-            @component('swal', [
-                'title' => 'Your message was sent successfully',
-                'text' => 'Thanks for your time',
-                'icon' => 'success',
-            ])
-            @endcomponent
-        @endif
-    @endif
 @endsection

@@ -16,20 +16,20 @@
                 @foreach ($rooms as $room)
                     <div class="rooms-list__swiper-slide swiper-slide">
                         <div class="rooms__list-item">
-                            <img class="rooms__list-item-img" src="{{ $room['photo'] }}" alt="">
+                            <img class="rooms__list-item-img" src="{{ $room->firstPhoto() }}" alt="">
                             <div class="rooms__list-content">
                                 <div class="rooms__list-item-details">
                                     @component('amenitiesMenu', ['room' => $room, 'title' => false])
                                     @endcomponent
                                     <p class="rooms__list-item-details-title">
-                                        {{ $room['type_name'] }}
+                                        {{ $room->typeName() }}
                                     </p>
                                     <p class="rooms__list-item-details-text">
-                                        {{ $room['description'] }}
+                                        {{ $room->description }}
                                     </p>
                                 </div>
                                 <p class="rooms__list-item-details-price">
-                                    <span>${{ $room['price'] }}/Night</span><span><a
+                                    <span>${{ $room->calculateDiscount() }}/Night</span><span><a
                                             href="{{ route('roomDetails', ['room' => $room['id'], 'check_in' => $check_in, 'check_out' => $check_out]) }}"></a></span>
                                 </p>
                             </div>

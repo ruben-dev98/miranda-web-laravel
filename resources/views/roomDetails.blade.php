@@ -14,16 +14,16 @@
         <div class="room-details__details-info">
             <div class="details-info__text">
                 <div>
-                    <p class="room-details__details-informative-text upper__case">{{ $room['type'] }}</p>
-                    <p class="room-details__details-title">{{ $room['name'] }}</p>
+                    <p class="room-details__details-informative-text upper__case">{{ $room->type }}</p>
+                    <p class="room-details__details-title">{{ $room->name() }}</p>
                 </div>
                 <p class="room-details__details-price">
                     <span>$</span>
-                    <span>{{ $room['price'] }}</span>
+                    <span>{{ $room->calculateDiscount() }}</span>
                     <span>/Night</span>
                 </p>
             </div>
-            <img class="room-details__details-img" src="{{ $room['photo'] }}" alt="">
+            <img class="room-details__details-img" src="{{ $room->firstPhoto() }}" alt="">
         </div>
         <form class="room-details__form" method="POST" action="{{ route('createBooking') }}">
             @csrf
@@ -54,7 +54,7 @@
                 <label for="special_request">Special Request</label>
                 <textarea class="room-details__area" cols="30" rows="10" name="special_request" id="special_request"></textarea>
             </div>
-            <input type="hidden" name="room_id" id="room_id" value="{{ $room['id'] }}">
+            <input type="hidden" name="room_id" id="room_id" value="{{ $room->id }}">
             <button class="button upper__case" type="submit">Check Availability</button>
         </form>
         <p class="room-details__text">
@@ -94,22 +94,22 @@
             <div class="offers__swiper-wrapper swiper-wrapper">
                 @foreach ($rooms as $room)
                     <div class="offers__swiper-slide rooms__grid-item swiper-slide">
-                        <img src="{{ $room['photo'] }}" alt="">
+                        <img src="{{ $room->firstPhoto() }}" alt="">
                         @component('amenitiesMenu', ['room' => $room, 'title' => false])
                         @endcomponent
                         <div class="rooms__grid-item-details offers__details">
-                            <p class="rooms__grid-item-details-title">{{ $room['type_name'] }}</p>
+                            <p class="rooms__grid-item-details-title">{{ $room->typeName() }}</p>
                             <p class="rooms__grid-item-details-text">
-                                {{ $room['description'] }}
+                                {{ $room->description }}
                             </p>
                             <p class="rooms__grid-item-details-price">
-                                <span>${{ $room['price'] }}/Night</span>
+                                <span>${{ $room->calculateDiscount() }}/Night</span>
                                 <span>
                                     @if ($check_in === null)
-                                        <a href="{{ route('roomDetails', ['room' => $room['id']]) }}"></a>
+                                        <a href="{{ route('roomDetails', ['room' => $room->id]) }}"></a>
                                     @else
                                         <a
-                                            href="{{ route('roomDetails', ['room' => $room['id'], 'check_in' => $check_in, 'check_out' => $check_out]) }}"></a>
+                                            href="{{ route('roomDetails', ['room' => $room->id, 'check_in' => $check_in, 'check_out' => $check_out]) }}"></a>
                                     @endif
                                 </span>
                             </p>

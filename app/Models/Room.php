@@ -40,31 +40,27 @@ class Room extends Model
 
     public static function offers()
     {
-        $rooms = self::with(['photos', 'amenities'])->where('offer', 'true')->orderBy('discount', 'desc')->get();
-        return self::formatRooms($rooms);
+        return self::with(['photos', 'amenities'])->where('offer', 'true')->orderBy('discount', 'desc')->get();
     }
 
     public static function swiper()
     {
-        $rooms = self::with(['photos', 'amenities'])->orderBy('price', 'desc')->take(3)->get();
-        return self::formatRooms($rooms);
+        return self::with(['photos', 'amenities'])->orderBy('price', 'desc')->take(3)->get();
     }
 
     public static function rooms()
     {
-        $rooms = self::with(['photos', 'amenities'])->get();
-        return self::formatRooms($rooms);
+        return self::with(['photos', 'amenities'])->get();
     }
 
     public static function checkAvailability($check_in, $check_out)
     {
-        $rooms = self::with(['photos', 'amenities'])->whereDoesntHave('bookings', function ($query) use ($check_in, $check_out) {
+        return self::with(['photos', 'amenities'])->whereDoesntHave('bookings', function ($query) use ($check_in, $check_out) {
             $query->where('check_in', '<', $check_out)->where('check_out', '>', $check_in)
                 ->orWhere('check_in', '=<', $check_in)->where('check_out', '<', $check_out)
                 ->orWhere('check_in', '>=', $check_in)->where('check_in', '<', $check_out)
                 ->orWhere('check_out', '>', $check_in)->where('check_out', '=<', $check_out);
         })->get();
-        return self::formatRooms($rooms);
     }
 
     public static function isAvailable($room_id, $check_in, $check_out)
@@ -88,28 +84,15 @@ class Room extends Model
         return round($this->price / 100);
     }
 
-    public static function formatRoom($rawRoom)
-    {
-        return [
-            'id' => $rawRoom['id'],
-            'description' => $rawRoom['description'],
-            'type' => $rawRoom['type'],
-            'name' => 'Room ' . $rawRoom['number'],
-            'type_name' => $rawRoom['type'] . ' - Room ' . $rawRoom['number'],
-            'amenities' => $rawRoom['amenities'],
-            'price' => $rawRoom->calculateDiscount(),
-            'price_not_discount' => $rawRoom->calculateWithoutDiscount(),
-            'photo' => $rawRoom['photos'][0]['url'],
-            'cancellation' => $rawRoom['cancellation']
-        ];
+    public function name() {
+        return 'Room ' . $this->number;
     }
 
-    private static function formatRooms($rawRooms)
-    {
-        $formatRooms = [];
-        foreach ($rawRooms as $roomToFormat) {
-            $formatRooms[] = self::formatRoom($roomToFormat);
-        }
-        return $formatRooms;
+    public function typeName() {
+        return $this->type . ' - ' . $this->name();
+    }
+
+    public function firstPhoto() {
+        return $this->photos[0]->url;
     }
 }

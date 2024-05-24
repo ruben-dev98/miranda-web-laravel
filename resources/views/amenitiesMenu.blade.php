@@ -3,7 +3,7 @@
 @else
     <menu class="rooms__grid-item-menu rooms__menu offers__menu">
 @endif
-@foreach ($room['amenities'] as $amenity)
+@foreach ($room->amenities as $amenity)
     @if ($amenity !== null)
         <span class="rooms__menu-item">
             <img src="{{ $amenity->getAmenityIcon() }}" alt="">

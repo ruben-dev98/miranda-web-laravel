@@ -3,11 +3,11 @@
 @else
 <ul class="room-details__amenities-list">
 @endif
-    @foreach ($room['amenities'] as $amenity)
+    @foreach ($room->amenities as $amenity)
         @if ($amenity !== null)
             <li class="room-details__amenities-list-item">
                 <img class="room-details__amenities-list-item-img" src="{{ $amenity->getAmenityIcon() }}" alt="">
-                <span class="room-details__amenities-list-item-text">{{ $amenity['name'] }}</span>
+                <span class="room-details__amenities-list-item-text">{{ $amenity->name }}</span>
             </li>
         @endif
     @endforeach

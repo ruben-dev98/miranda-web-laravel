@@ -11,8 +11,8 @@ class RoomController extends Controller
      */
     public function index()
     {
-        $formatRooms = Room::rooms();
-        return view('rooms', ['rooms' => $formatRooms]);
+        $rooms = Room::rooms();
+        return view('rooms', ['rooms' => $rooms]);
     }
 
     /**
@@ -20,31 +20,30 @@ class RoomController extends Controller
      */
     public function show(Room $room)
     {
-        $formatRoom = Room::formatRoom($room);
         $check_in = isset($_GET['check_in']) ? $_GET['check_in'] : null;
         $check_out = isset($_GET['check_out']) ? $_GET['check_out'] : null;
-        $formatRooms = Room::swiper();
-        return view('roomDetails', ['room' => $formatRoom, 'check_in' => $check_in, 'check_out' => $check_out, 'rooms' => $formatRooms]);
+        $roomsSwiper = Room::swiper();
+        return view('roomDetails', ['room' => $room, 'check_in' => $check_in, 'check_out' => $check_out, 'rooms' => $roomsSwiper]);
     }
 
     public function roomsList()
     {
         $check_in = isset($_GET['check_in']) ? $_GET['check_in'] : null;
         $check_out = isset($_GET['check_out']) ? $_GET['check_out'] : null;
-        $formatRooms = Room::checkAvailability($check_in, $check_out);
-        return view('roomsList', ['rooms' => $formatRooms, 'check_in' => $check_in, 'check_out' => $check_out]);
+        $rooms = Room::checkAvailability($check_in, $check_out);
+        return view('roomsList', ['rooms' => $rooms, 'check_in' => $check_in, 'check_out' => $check_out]);
     }
 
     public function home()
     {
-        $formatRooms = Room::swiper();
-        return view('index', ['rooms' => $formatRooms]);
+        $roomsSwiper = Room::swiper();
+        return view('index', ['rooms' => $roomsSwiper]);
     }
 
     public function offers()
     {
-        $formatRoomsSwiper = Room::swiper();
-        $formatRooms = Room::offers();
-        return view('offers', ['rooms' => $formatRooms, 'popularRooms' => $formatRoomsSwiper]);
+        $roomsSwiper = Room::swiper();
+        $offersRooms = Room::offers();
+        return view('offers', ['rooms' => $offersRooms, 'popularRooms' => $roomsSwiper]);
     }
 }
