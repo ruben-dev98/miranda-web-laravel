@@ -30,6 +30,14 @@
             @endcomponent
         @endif
     @endif
+    @if ($errors->any())
+        @component('swal', [
+                'title' => 'Validation errors',
+                'text' => implode('\n', $errors->all()),
+                'icon' => 'error',
+            ])
+        @endcomponent
+    @endif
 </body>
 
 </html>

@@ -10,7 +10,7 @@ class Photo extends Model
 {
     use HasFactory;
     protected $table = 'photo';
-    protected $fillable = ['id', 'url', 'room_id'];
+    protected $fillable = ['url', 'room_id'];
 
     public function room(): BelongsTo
     {

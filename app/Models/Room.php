@@ -12,15 +12,12 @@ class Room extends Model
     use HasFactory;
     protected $table = 'room';
     protected $fillable = [
-        'id',
         'type',
         'number',
         'description',
-        'offer',
         'price',
         'cancellation',
-        'discount',
-        'status'
+        'discount'
     ];
 
     public function photos(): HasMany

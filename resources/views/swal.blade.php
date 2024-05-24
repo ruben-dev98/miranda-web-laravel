@@ -1,5 +1,3 @@
-<button id="swal">
-</button>
 <script defer>
     Swal.fire({
         title: '{{ $title }}',

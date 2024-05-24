@@ -85,8 +85,4 @@
             </div>
         </form>
     </section>
-    @if (session('error'))
-        @component('swal', ['title' => 'Your data has some errors', 'text' => 'Incorrect data', 'icon' => 'error'])
-        @endcomponent
-    @endif
 @endsection
