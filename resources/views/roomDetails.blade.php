@@ -124,8 +124,7 @@
     @if (session('error'))
         @component('swal', [
             'title' => '¡We are sorry!',
-            'text' => 'This room is not available for the dates you need. Please try different dates or try a different room.
-            The Miranda Hotel',
+            'text' => 'This room is not available for the dates you need. Please try different dates or try a different room. The Miranda Hotel',
             'icon' => 'error',
         ])
         @endcomponent

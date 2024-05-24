@@ -31,6 +31,8 @@ class MessageController extends Controller
             ]);
             
             Message::create($request->all());
-            return view('contact')->with('success', 1)->with('message', 1);
+            session()->flash('success', 1);
+            session()->flash('message', 1);
+            return view('contact');
     }
 }

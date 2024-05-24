@@ -50,6 +50,11 @@ class Room extends Model
         return self::with(['photos', 'amenities'])->get();
     }
 
+    public static function room($id)
+    {
+        return Room::with(['amenities', 'photos'])->find($id);
+    }
+
     public static function checkAvailability($check_in, $check_out)
     {
         return self::with(['photos', 'amenities'])->whereDoesntHave('bookings', function ($query) use ($check_in, $check_out) {
@@ -81,15 +86,18 @@ class Room extends Model
         return round($this->price / 100);
     }
 
-    public function name() {
+    public function name()
+    {
         return 'Room ' . $this->number;
     }
 
-    public function typeName() {
+    public function typeName()
+    {
         return $this->type . ' - ' . $this->name();
     }
 
-    public function firstPhoto() {
+    public function firstPhoto()
+    {
         return $this->photos[0]->url;
     }
 }

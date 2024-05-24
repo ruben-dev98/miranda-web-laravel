@@ -38,6 +38,9 @@
             ])
         @endcomponent
     @endif
+    @php
+        session()->forget(['error', 'success']);
+    @endphp
 </body>
 
 </html>

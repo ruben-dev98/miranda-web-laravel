@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Booking;
 use App\Models\Room;
-use Error;
-use Exception;
 use Illuminate\Http\Request;
 
 class BookingController extends Controller
@@ -18,17 +16,20 @@ class BookingController extends Controller
         $request->validate([
             'check_in' => 'required|date|after:date',
             'check_out' => 'required|date|after:check_in',
-            'full_name' => 'required|email|max:255',
+            'full_name' => 'required|string|max:255',
             'email' => 'required|email|max:255',
-            'phone' => 'required|number',
-            'special_request' => 'string|max:3000',
+            'phone' => 'required|integer',
+            'special_request' => 'max:3000',
             'room_id' => 'required|integer'
         ]);
-
+        $optionsToView = ['room' => Room::room($request->room_id), 'check_in' => '', 'check_out' => '', 'rooms' => Room::swiper()];
         if(Room::isAvailable($request->room_id, $request->check_in, $request->check_out) !== null) {
-            return back()->with('error', 1);
+            session()->flash('error', 1);
+            return view('roomDetails', $optionsToView);
         }
         Booking::create($request->all());
-        return view('roomDetails', ['room' => $request->room_id])->with('success', 1)->with('booking', 1);
+        session()->flash('success', 1);
+        session()->flash('booking', 1);
+        return view('roomDetails', $optionsToView);
     }
 }
