@@ -58,7 +58,7 @@
             <button class="button upper__case" type="submit">Check Availability</button>
         </form>
         <p class="room-details__text">
-            {{ $room['description'] }}
+            {{ $room->description }}
         </p>
     </section>
     <section class="room-details__amenities --max-width">
@@ -70,7 +70,7 @@
         <div class="room-details__founder-content">
             <div class="room-details__founder-img" style="background-image: url(assets/img/bg-footer.png);">
                 <div class="room-details__founder-elipsis">
-                    <img class="room-details__founder-check" src="assets/icon/check.svg" alt="">
+                    <img class="room-details__founder-check" src="{{ asset('assets/icon/check.svg') }}" alt="">
                 </div>
             </div>
             <p class="room-details__founder-title">Rosalina D. William</p>
@@ -85,7 +85,7 @@
     <section class="room-details__cancellation --max-width">
         <p class="room-details__cancellation-title">Cancellation</p>
         <p class="room-details__cancellation-text">
-            {{ $room['cancellation'] }}
+            {{ $room->cancellation }}
         </p>
     </section>
     <section class="offers__popular-rooms offers__popular-rooms--ligth room-details__related-rooms --max-width">

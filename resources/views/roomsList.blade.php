@@ -30,7 +30,7 @@
                                 </div>
                                 <p class="rooms__list-item-details-price">
                                     <span>${{ $room->calculateDiscount() }}/Night</span><span><a
-                                            href="{{ route('roomDetails', ['room' => $room['id'], 'check_in' => $check_in, 'check_out' => $check_out]) }}"></a></span>
+                                            href="{{ route('roomDetails', ['room' => $room->id, 'check_in' => $check_in, 'check_out' => $check_out]) }}"></a></span>
                                 </p>
                             </div>
                         </div>
