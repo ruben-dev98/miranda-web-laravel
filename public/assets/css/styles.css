@@ -3491,4 +3491,55 @@ body {
 .info--correct {
     color: green;
 }
+
+.table {
+    margin: 0 auto;
+    width: 100%;
+    padding: 2rem;
+    border-radius: 20px;
+}
+
+.table thead > tr {
+    text-align: left;
+    height: 50px;
+}
+
+.table thead > tr th {
+    padding: 0rem 0.5rem 0.5rem 0.5rem;
+    color: #222;
+}
+
+.table tbody > tr {
+    height: 100px;
+}
+
+.table tbody > tr td:not(button), .table tbody > tr td:not(span) {
+    padding: 0.5rem 0.5rem;
+    color: #777;
+}
+
+.table tbody > tr:hover {
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.table .actions {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.table .actions img {
+    width: 28px;
+    height: 28px;
+}
+
+.table .actions button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 10px;
+}
+
 /*# sourceMappingURL=styles.css.map */

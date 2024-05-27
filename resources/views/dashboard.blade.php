@@ -17,13 +17,32 @@
         </x-slot>
 
         <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="p-6 text-gray-900">
-                        {{ __("You're logged in!") }}
-                    </div>
-                </div>
-            </div>
+            <table class="table --max-width">
+                <thead>
+                    <tr>
+                        @foreach (['ID', 'Guest Name', 'Room', 'Actions'] as $prop)
+                            <th>{{ $prop }}</th>
+                        @endforeach
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ([['ID' => 1, 'Guest' => 'Jacinto', 'Room' => 'Double Suite 20'], ['ID' => 1, 'Guest' => 'Jacinto', 'Room' => 'Double Suite 20'], ['ID' => 1, 'Guest' => 'Jacinto', 'Room' => 'Double Suite 20']] as $info)
+                        <tr>
+                            <td>{{$info['ID']}}</td>
+                            <td>{{$info['Guest']}}</td>
+                            <td>{{$info['Room']}}</td>
+                            <td class="actions">
+                                <button>
+                                    <img src="{{ asset('assets/icon/edit-order.svg') }}">
+                                </button>
+                                <button>
+                                    <img src="{{ asset('assets/icon/delete-order.svg') }}">
+                                </button>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
     @endsection
 </x-app-layout>
