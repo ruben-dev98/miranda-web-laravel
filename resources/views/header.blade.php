@@ -16,17 +16,19 @@
                 </h2>
             </a>
         </div>
-        <nav class="header__nav" hidden>
+        <nav class="header__nav">
             <ul>
                 <li><a href="{{ route('about') }}">About Us</a></li>
                 <li><a href="{{ route('rooms') }}">Rooms</a></li>
                 <li><a href="{{ route('offers') }}">Offers</a></li>
                 <li><a href="{{ route('contact') }}">Contact</a></li>
+                <li><a href="{{ route('dashboard') }}" active="{{ request()->routeIs('dashboard') }}">
+                        {{ __('Dashboard') }}
+                    </a></li>
             </ul>
         </nav>
         <div class="header__icons">
-            <img class="header__icons-icon" src="{{ asset('assets/icon/user.svg') }}">
-            <img class="header__icons-icon" src="{{ asset('assets/icon/search.svg') }}">
+            <a href={{ route('login') }}><img class="header__icons-icon" src="{{ asset('assets/icon/user.svg') }}"></a>
         </div>
     </header>
 </div>
