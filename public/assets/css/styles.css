@@ -93,6 +93,10 @@
     margin: 0px 0px 0px 8px;
 }
 
+.button--red {
+    background-color: rgb(239 68 68);
+}
+
 .button--big {
     width: 17.5em;
 }
@@ -3425,7 +3429,7 @@ body {
 }
 
 .form-control input:focus {
-    border-color: 1px solid #bead8e;
+    border-color: #bead8e;
     --tw-ring-color: #bead8e;
 }
 
@@ -3542,4 +3546,26 @@ body {
     border-radius: 10px;
 }
 
+.profile__title {
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+    color: #222;
+}
+
+.profile__subtitle {
+    margin-top: .5rem;
+    font-weight: 500;
+    font-size: 1.25rem;
+    line-height: 1.25rem;
+    color: #777;
+}
+
+.button--modal {
+    color: #222;
+    border-color: #111;
+}
+
+.form--modal {
+    margin: 20px 20px;
+}
 /*# sourceMappingURL=styles.css.map */

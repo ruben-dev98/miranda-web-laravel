@@ -10,12 +10,7 @@
                 <span>Home</span><span>|</span><span>Dashboard</span>
             </div>
         </header>
-        <x-slot name="header">
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                {{ __('Dashboard') }}
-            </h2>
-        </x-slot>
-
+        @include('layouts.navigation')
         <div class="py-12">
             <table class="table --max-width">
                 <thead>

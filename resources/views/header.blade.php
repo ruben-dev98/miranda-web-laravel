@@ -22,9 +22,6 @@
                 <li><a href="{{ route('rooms') }}">Rooms</a></li>
                 <li><a href="{{ route('offers') }}">Offers</a></li>
                 <li><a href="{{ route('contact') }}">Contact</a></li>
-                <li><a href="{{ route('dashboard') }}" active="{{ request()->routeIs('dashboard') }}">
-                        {{ __('Dashboard') }}
-                    </a></li>
             </ul>
         </nav>
         <div class="header__icons">

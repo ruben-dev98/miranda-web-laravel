@@ -13,12 +13,11 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @if ($errors->any())
         @component('swal', [
-            'title' => 'Validation errors',
-            'text' => implode('\n', $errors->all()),
-            'icon' => 'error',
-        ])
+                'title' => 'Validation errors',
+                'text' => implode('\n', $errors->all()),
+                'icon' => 'error',
+            ])
         @endcomponent
     @endif
 </body>
-
 </html>

@@ -1,5 +1,5 @@
 @props(['value'])
 
-<label>
+<label {{ $attributes }}>
     {{ $value ?? $slot }}
 </label>
