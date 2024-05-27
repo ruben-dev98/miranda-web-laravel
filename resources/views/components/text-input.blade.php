@@ -1,3 +1,3 @@
 @props(['disabled' => false])
 
-<input {{ $disabled ? 'disabled' : '' }}>
+<input {{ $disabled ? 'disabled' : '' }} {!! $attributes !!}>

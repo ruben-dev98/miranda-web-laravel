@@ -17,14 +17,14 @@
         <div class="form-control form-control--no-margin">
             <x-input-label for="name" :value="__('Name')" />
             <x-text-input id="name" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+            <x-input-error :messages="$errors->get('name')"/>
         </div>
 
         <!-- Email Address -->
         <div class="form-control">
             <x-input-label for="email" :value="__('Email')" />
             <x-text-input id="email" type="email" name="email" :value="old('email')" required autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+            <x-input-error :messages="$errors->get('email')"/>
         </div>
 
         <!-- Password -->
@@ -36,7 +36,7 @@
                             name="password"
                             required autocomplete="new-password" />
 
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+            <x-input-error :messages="$errors->get('password')"/>
         </div>
 
         <!-- Confirm Password -->
@@ -47,7 +47,7 @@
                             type="password"
                             name="password_confirmation" required autocomplete="new-password" />
 
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+            <x-input-error :messages="$errors->get('password_confirmation')" />
         </div>
 
         <div class="form-control form-control--flex">

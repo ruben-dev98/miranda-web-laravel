@@ -11,7 +11,6 @@
     @component('footer')
     @endcomponent
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
     @if ($errors->any())
         @component('swal', [
             'title' => 'Validation errors',
@@ -20,9 +19,6 @@
         ])
         @endcomponent
     @endif
-    @php
-        session()->forget(['error', 'success']);
-    @endphp
 </body>
 
 </html>

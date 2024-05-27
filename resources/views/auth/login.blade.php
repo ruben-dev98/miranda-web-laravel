@@ -19,7 +19,7 @@
         <div class="form-control form-control--no-margin">
             <x-input-label for="email" :value="__('Email')" />
             <x-text-input id="email" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+            <x-input-error :messages="$errors->get('email')"/>
         </div>
 
         <!-- Password -->

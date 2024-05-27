@@ -3407,6 +3407,12 @@ body {
     margin: 50px auto 60px auto;
 }
 
+.form__section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .form-control input {
     border-color: rgb(209 213 219);
     border-radius: 6px;
@@ -3456,8 +3462,10 @@ body {
     margin-right: 0.75rem;
 }
 
-.form__errors {
-
+.form-control .errors {
+    color: rgb(220 38 38);
+    font-size: .875rem;
+    line-height: 1.25rem;
 }
 
 .form-contol--check input {
@@ -3474,4 +3482,13 @@ body {
     gap: 8px;
 }
 
+.info {
+    margin-bottom: 8px;
+    font-size: 0.85rem;
+    line-height: 1rem;
+}
+
+.info--correct {
+    color: green;
+}
 /*# sourceMappingURL=styles.css.map */
