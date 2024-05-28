@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang="es">
-@component('head')
-@endcomponent
+
+<head>
+    @vite(['resources/css/app.css'])
+    @component('head')
+    @endcomponent
+</head>
 
 <body>
-    @component('header')
+    @component('header', ['class' => 'header__menu--login'])
     @endcomponent
     @section('content')
     @show
@@ -13,11 +17,12 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @if ($errors->any())
         @component('swal', [
-                'title' => 'Validation errors',
-                'text' => implode('\n', $errors->all()),
-                'icon' => 'error',
-            ])
+            'title' => 'Validation errors',
+            'text' => implode('\n', $errors->all()),
+            'icon' => 'error',
+        ])
         @endcomponent
     @endif
 </body>
+
 </html>

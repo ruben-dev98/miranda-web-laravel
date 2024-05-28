@@ -24,4 +24,8 @@ class Order extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public static function orders() {
+        return self::with(['room', 'user'])->get();
+    }
 }

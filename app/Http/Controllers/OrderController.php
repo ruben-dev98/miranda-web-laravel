@@ -12,7 +12,8 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        $orders = Order::orders();
+        return view('dashboard', ['orders' => $orders]);
     }
 
     /**

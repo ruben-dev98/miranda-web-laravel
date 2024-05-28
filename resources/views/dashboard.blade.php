@@ -10,7 +10,6 @@
                 <span>Home</span><span>|</span><span>Dashboard</span>
             </div>
         </header>
-        @include('layouts.navigation')
         <div class="py-12">
             <table class="table --max-width">
                 <thead>

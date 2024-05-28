@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
-@component('head')
-@endcomponent
+
+<head>
+    @component('head')
+    @endcomponent
+</head>
 
 <body>
-    @component('header')
+    @component('header', ['class' => ''])
     @endcomponent
     @section('content')
     @show
@@ -32,10 +35,10 @@
     @endif
     @if ($errors->any())
         @component('swal', [
-                'title' => 'Validation errors',
-                'text' => implode('\n', $errors->all()),
-                'icon' => 'error',
-            ])
+            'title' => 'Validation errors',
+            'text' => implode('\n', $errors->all()),
+            'icon' => 'error',
+        ])
         @endcomponent
     @endif
     @php
