@@ -475,11 +475,11 @@
     }
 
     .header__logo {
-        display: inline-block;
         width: 30%;
     }
 
     .header__logo-img {
+        display: inline-block;
         width: 5em;
         height: 5em;
         vertical-align: middle;
