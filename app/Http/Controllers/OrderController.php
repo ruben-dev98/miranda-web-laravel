@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\Room;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -12,16 +13,10 @@ class OrderController extends Controller
      */
     public function index()
     {
+        $types = Order::types();
+        $rooms = Room::rooms();
         $orders = Order::orders();
-        return view('orders.dashboard', ['orders' => $orders]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        return view('orders.dashboard', ['orders' => $orders, 'rooms' => $rooms, 'types' => $types]);
     }
 
     /**
@@ -29,7 +24,17 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'user_id' => 'integer|required',
+            'room_id' => 'integer|required',
+            'type' => 'string|required',
+            'description' => 'string|required'
+        ]);
+        Order::create($request->all());
+        $types = Order::types();;
+        $rooms = Room::rooms();
+        $orders = Order::orders();
+        return view('orders.dashboard', ['orders' => $orders, 'rooms' => $rooms, 'types' => $types]);
     }
 
     /**
@@ -37,15 +42,7 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Order $order)
-    {
-        //
+        return view('orders.order', ['order' => $order]);
     }
 
     /**
@@ -53,7 +50,13 @@ class OrderController extends Controller
      */
     public function update(Request $request, Order $order)
     {
-        //
+        $order->type = $request->type;
+        $order->description = $request->description;
+        $order->save();
+        $types = Order::types();
+        $rooms = Room::rooms();
+        $orders = Order::orders();
+        return view('orders.dashboard', ['orders' => $orders, 'rooms' => $rooms, 'types' => $types]);
     }
 
     /**
@@ -61,6 +64,10 @@ class OrderController extends Controller
      */
     public function destroy(Order $order)
     {
-        //
+        $order->delete();
+        $types = Order::types();
+        $rooms = Room::rooms();
+        $orders = Order::orders();
+        return view('orders.dashboard', ['orders' => $orders, 'rooms' => $rooms, 'types' => $types]);
     }
 }

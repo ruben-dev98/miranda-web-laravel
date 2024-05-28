@@ -93,6 +93,10 @@
     margin: 0px 0px 0px 8px;
 }
 
+.button--form a {
+    padding: 1.5rem 2.7rem;
+}
+
 .button--red {
     background-color: rgb(239 68 68);
 }
@@ -3509,7 +3513,6 @@ body {
 }
 
 .table {
-    margin: 0 auto;
     width: 100%;
     padding: 2rem;
     border-radius: 20px;
@@ -3543,7 +3546,8 @@ body {
     height: 28px;
 }
 
-.table .actions button {
+.table .actions button, .table .actions form {
+    display: inline-block;
     width: 28px;
     height: 28px;
     border-radius: 10px;
@@ -3607,4 +3611,42 @@ body {
     color: #222;
     outline: 0;
 }
+
+.--center {
+    margin: 0 auto;
+}
+
+.form__select {
+    margin: 10px 2px;
+    display: block;
+    border-color: #bead8e;
+    background-color: #f8f8f8;
+    color: #222;
+    border-radius: 20px;
+    font-family: "Archivo", sans-serif;;
+    text-align: left;
+    width: 50%;
+    height: 50px;
+}
+
+.form__area {
+    margin: 10px 2px;
+    display: block;
+    border-color: #bead8e;
+    background-color: #f8f8f8;
+    color: #222;
+    border-radius: 20px;
+    font-family: "Archivo", sans-serif;;
+    text-align: left;
+    width: 50%;
+    height: 200px;
+}
+
+
+.form__select option {
+    margin: 40px;
+    color: #222;
+}
+
+
 /*# sourceMappingURL=styles.css.map */

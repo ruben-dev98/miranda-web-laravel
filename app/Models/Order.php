@@ -10,10 +10,12 @@ class Order extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['room_id',
-    'user_id',
-    'type',
-    'description'];
+    protected $fillable = [
+        'user_id',
+        'room_id',
+        'type',
+        'description'
+    ];
 
     public function room(): BelongsTo
     {
@@ -25,7 +27,13 @@ class Order extends Model
         return $this->belongsTo(User::class);
     }
 
-    public static function orders() {
+    public static function orders()
+    {
         return self::with(['room', 'user'])->get();
+    }
+
+    public static function types()
+    {
+        return ['Food', 'Other'];
     }
 }
