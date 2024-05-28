@@ -4,10 +4,10 @@
         <header class="banner">
             <div class="banner__inner banner__inner--about --max-width">
                 <p class="font__title font__title--dark upper__case">The Ultimate Luxury </p>
-                <h2 class="font__subtitle font__subtitle--banner font__subtitle--dark">Dashboard</h2>
+                <h2 class="font__subtitle font__subtitle--banner font__subtitle--dark">Orders</h2>
             </div>
             <div class="banner__pagination">
-                <span>Home</span><span>|</span><span>Dashboard</span>
+                <span>Home</span><span>|</span><span>Orders</span>
             </div>
         </header>
         <div class="py-12">
