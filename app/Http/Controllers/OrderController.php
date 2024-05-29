@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use App\Models\Room;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class OrderController extends Controller
 {
@@ -31,32 +32,23 @@ class OrderController extends Controller
             'description' => 'string|required'
         ]);
         Order::create($request->all());
-        $types = Order::types();;
-        $rooms = Room::rooms();
-        $orders = Order::orders();
-        return view('orders.dashboard', ['orders' => $orders, 'rooms' => $rooms, 'types' => $types]);
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Order $order)
-    {
-        return view('orders.order', ['order' => $order]);
+        session()->flash('success', 1);
+        session()->flash('store', 1);
+        return Redirect::route('dashboard');
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Order $order)
+    public function update(Request $request)
     {
+        $order = Order::find($request->id);
         $order->type = $request->type;
         $order->description = $request->description;
         $order->save();
-        $types = Order::types();
-        $rooms = Room::rooms();
-        $orders = Order::orders();
-        return view('orders.dashboard', ['orders' => $orders, 'rooms' => $rooms, 'types' => $types]);
+        session()->flash('success', 1);
+        session()->flash('update', 1);
+        return Redirect::route('dashboard');
     }
 
     /**
@@ -65,9 +57,8 @@ class OrderController extends Controller
     public function destroy(Order $order)
     {
         $order->delete();
-        $types = Order::types();
-        $rooms = Room::rooms();
-        $orders = Order::orders();
-        return view('orders.dashboard', ['orders' => $orders, 'rooms' => $rooms, 'types' => $types]);
+        session()->flash('success', 1);
+        session()->flash('destroy', 1);
+        return Redirect::route('dashboard');
     }
 }

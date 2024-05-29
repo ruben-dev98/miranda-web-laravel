@@ -26,12 +26,10 @@ Route::post('/room', [BookingController::class, 'store'])->name('createBooking')
 Route::middleware('auth')->group(function () {
     
     Route::get('/dashboard', [OrderController::class, 'index'])->name('dashboard');
-    Route::get('/order/{order}', [OrderController::class, 'show'])->name('orderDetails');
 
     Route::post('/order', [OrderController::class, 'store'])->name('orderNew');
-    
-    Route::get('/order/edit/{order}', [OrderController::class, 'edit'])->name('orderEdit');
-    Route::patch('/order/edit/{order}', [OrderController::class, 'update'])->name('orderUpdate');
+
+    Route::patch('/order/edit/', [OrderController::class, 'update'])->name('orderUpdate');
 
     Route::delete('/order/{order}', [OrderController::class, 'destroy'])->name('orderDelete');
 });

@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Facades\Auth;
 
 class Order extends Model
 {
@@ -29,7 +30,7 @@ class Order extends Model
 
     public static function orders()
     {
-        return self::with(['room', 'user'])->get();
+        return self::with(['room', 'user'])->where('user_id', Auth::id())->get();
     }
 
     public static function types()

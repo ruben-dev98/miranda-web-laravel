@@ -12,7 +12,8 @@
         </header>
         <div class="py-12 --max-width --center">
             <div class="form-control form-control--flex">
-                <x-primary-button x-data="" x-on:click.prevent="$dispatch('open-modal', 'create-new-order')">
+                <x-primary-button x-data="" x-on:click.prevent="$dispatch('open-modal', {name: 'create-new-order',
+                data: {} })">
                     + New Order
                 </x-primary-button>
             </div>
@@ -32,8 +33,20 @@
                                 <td>{{ $order->type }}</td>
                                 <td>{{ $order->description }}</td>
                                 <td class="actions">
-                                    <button x-data="{{ $order }}"
-                                        x-on:click.prevent="$dispatch('open-modal', 'edit-order')">
+                                    <button x-data="{
+                                        id: '{{ $order->id }}',
+                                        type: '{{ $order->type }}',
+                                        description: '{{ $order->description }}'
+                                    }"
+                                        x-on:click.prevent="$dispatch('open-modal', 
+                                        {
+                                            name:'edit-order', 
+                                            data: {
+                                                id: id, 
+                                                type: type, 
+                                                description: description
+                                            }
+                                        })">
                                         <img src="{{ asset('assets/icon/edit-order.svg') }}">
                                     </button>
                                     <form method="POST" action="{{ route('orderDelete', ['order' => $order->id]) }}">
@@ -56,80 +69,7 @@
                 </div>
             @endif
         </div>
-        <x-modal name="create-new-order" focusable>
-            <form method="post" class="form form--modal --max-width" action="{{ route('orderNew') }}" class="p-6">
-                @csrf
-
-                <h2 class="profile__title">
-                    {{ __('Create a new order') }}
-                </h2>
-                <x-text-input id="user_id" type="hidden" name="user_id" :value="Auth::id()" />
-
-                <div class="form-control">
-                    <x-input-label for="room_id" :value="__('Room')" />
-                    <select class="form__select" name="room_id" id="room">
-                        @foreach ($rooms as $room)
-                            <option value="{{ $room->id }}">{{ $room->name() }}</option>
-                        @endforeach
-                    </select>
-                    <x-input-error :messages="$errors->get('room_id')" />
-                </div>
-
-                <div class="form-control">
-                    <x-input-label for="type" :value="__('Type')" />
-                    <select class="form__select" name="type" id="type">
-                        @foreach ($types as $type)
-                            <option value="{{ $type }}">{{ $type }}</option>
-                        @endforeach
-                    </select>
-                    <x-input-error :messages="$errors->get('type')" />
-                </div>
-
-                <div class="form-control">
-                    <x-input-label for="description" :value="__('Description')" />
-                    <textarea class="form__area" name="description" id="description" cols="30" rows="10"></textarea>
-                    <x-input-error :messages="$errors->get('description')" />
-                </div>
-
-                <div class="form-control form-control--flex">
-                    <x-primary-button class="new__order">
-                        {{ __('Create New Order') }}
-                    </x-primary-button>
-                </div>
-            </form>
-        </x-modal>
-        <x-modal name="edit-order" focusable>
-            <form method="post" class="form form--modal --max-width" action="{{ route('orderNew') }}"
-                class="p-6">
-                @csrf
-
-                <h2 class="profile__title">
-                    {{ __('Create a new order') }}
-                </h2>
-
-                <div class="form-control">
-                    <x-input-label for="type" :value="__('Type')" />
-                    <select class="form__select" name="type" id="type"
-                        value="{{ $order->type }}">
-                        @foreach ($types as $type)
-                            <option value="{{ $type }}">{{ $type }}</option>
-                        @endforeach
-                    </select>
-                    <x-input-error :messages="$errors->get('type')" />
-                </div>
-
-                <div class="form-control">
-                    <x-input-label for="description" :value="__('Description')" />
-                    <textarea class="form__area" name="description" id="description" cols="30" rows="10">{{ $order->description }}</textarea>
-                    <x-input-error :messages="$errors->get('description')" />
-                </div>
-
-                <div class="form-control form-control--flex">
-                    <x-primary-button class="edit__order">
-                        {{ __('Edit Order') }}
-                    </x-primary-button>
-                </div>
-            </form>
-        </x-modal>
+        @include('orders.modalCreate')
+        @include('orders.modalEdit')
     @endsection
 </x-app-layout>
