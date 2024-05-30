@@ -42,6 +42,10 @@ class OrderController extends Controller
      */
     public function update(Request $request)
     {
+        $request->validate([
+            'type' => 'string|required',
+            'description' => 'string|required'
+        ]);
         $order = Order::find($request->id);
         $order->type = $request->type;
         $order->description = $request->description;
