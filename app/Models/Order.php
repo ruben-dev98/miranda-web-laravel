@@ -28,7 +28,7 @@ class Order extends Model
         return $this->belongsTo(User::class);
     }
 
-    public static function orders()
+    public static function currentUserOrders()
     {
         return self::with(['room', 'user'])->where('user_id', Auth::id())->get();
     }

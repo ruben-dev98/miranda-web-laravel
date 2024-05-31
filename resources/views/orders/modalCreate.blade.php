@@ -5,7 +5,6 @@
         <h2 class="profile__title">
             {{ __('Create a new order') }}
         </h2>
-        <x-text-input id="user_id" type="hidden" name="user_id" :value="Auth::id()" />
 
         <div class="form-control">
             <x-input-label for="room_id" :value="__('Room')" />
