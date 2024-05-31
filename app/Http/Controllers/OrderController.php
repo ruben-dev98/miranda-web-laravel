@@ -46,7 +46,7 @@ class OrderController extends Controller
             'type' => 'string|required',
             'description' => 'string|required'
         ]);
-        $order = Order::find($request->id);
+        $order = Order::findOrFail($request->id);
         $order->type = $request->type;
         $order->description = $request->description;
         $order->save();
