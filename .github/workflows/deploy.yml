@@ -13,12 +13,11 @@ jobs:
               with:
                 host: ${{ secrets.HOST }}
                 username: ${{ secrets.USERNAME }}
-                password: ${{ secrets.PASSWORD }}
                 port: ${{ secrets.PORT }}
+                key: ${{ secrets.KEY }}
                 script: |
                     cd /var/www/miranda-web-laravel
                     git pull origin main
                     php artisan migrate
                     npm run build
                     sudo systemctl restart apache2
-                    
