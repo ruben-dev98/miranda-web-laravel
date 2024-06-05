@@ -21,3 +21,4 @@ jobs:
                     php artisan migrate
                     npm run build
                     sudo systemctl restart apache2
+                    
